@@ -11,8 +11,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
+                //arguments "-DANDROID_ARM_NEON=TRUE", "-DANDROID_TOOLCHAIN=clang"  //不写此行则默认使用CMake配置的变量列表
                 cppFlags "-frtti -fexceptions"
-                abiFilters /*"armeabi",*/ "armeabi-v7a", "arm64-v8a", "x86", "x86_64" //不写此行则默认编译后面4个CPU类型的库
+                //abiFilters /*"armeabi",*/ "armeabi-v7a", "arm64-v8a", "x86", "x86_64" //不写此行则默认编译后面4个CPU类型的库
             }
         }
     }
