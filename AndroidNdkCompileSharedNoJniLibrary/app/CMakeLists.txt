@@ -5,6 +5,13 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+# 隐藏符号
+set(CMAKE_C_VISIBILITY_PRESET hidden)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+
+# 宏定义
+# ADD_DEFINITIONS(-D_HIDDEN_API_SYMBOL)
+
 #打印LOG
 message(STATUS "Cmake build type is: "${CMAKE_BUILD_TYPE})
 message(STATUS "Cmake build android abi is: "${ANDROID_ABI})
@@ -19,6 +26,7 @@ set(LOCAL_PATH ${CMAKE_SOURCE_DIR}/src/main/cpp)
 #引入头文件
 include_directories(
         ${LOCAL_PATH}/libs/source/cjson/
+        ${LOCAL_PATH}/libs/source/
         )
 
 #增加动态库
@@ -31,6 +39,7 @@ add_library( # Sets the name of the library.
              # Provides a relative path to your source file(s).
              ${LOCAL_PATH}/libs/source/cjson/cJSON.c
              ${LOCAL_PATH}/libs/source/cjson/cJSON_Utils.c
+             ${LOCAL_PATH}/libs/source/CCjsonInterface.cpp
              )
 
 
