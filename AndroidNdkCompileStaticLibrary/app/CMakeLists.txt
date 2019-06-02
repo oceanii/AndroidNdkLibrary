@@ -5,6 +5,10 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+# 隐藏符号
+set(CMAKE_C_VISIBILITY_PRESET hidden)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+
 #打印LOG
 message(STATUS "Cmake build type is: "${CMAKE_BUILD_TYPE})
 message(STATUS "Cmake build android abi is: "${ANDROID_ABI})
