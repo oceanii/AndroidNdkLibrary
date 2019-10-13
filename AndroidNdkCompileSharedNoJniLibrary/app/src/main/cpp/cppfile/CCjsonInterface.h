@@ -5,15 +5,13 @@
 #ifndef __Cjson_Interface_H__
 #define __Cjson_Interface_H__
 
-#ifndef _HIDDEN_API_SYMBOL
-    #define _API_SYMBOL __attribute__((visibility("default")))
-#else
-    #define _API_SYMBOL __attribute__((visibility("hidden")))
-#endif
 
+#define _SYMBOL_API    __attribute__((visibility ("default")))
+//#define _SYMBOL_API    __attribute__((visibility ("hidden")))
 
 
 //对外提供的封装接口,用到什么封装什么即可
-/*static*/ _API_SYMBOL const char* getCjsonVersion();
+_SYMBOL_API const char* API_getCjsonVersion();
+
 
 #endif //ANDROIDNDKCOMPILESHAREDNOJNILIBRARY_CCJSONINTERFACE_H

@@ -18,12 +18,13 @@ set(LOCAL_PATH ${CMAKE_SOURCE_DIR}/src/main/cpp)
 
 #引入头文件
 include_directories(
-        ${LOCAL_PATH}/libs/include/
+        ${LOCAL_PATH}/libs/include/cjsoninterface/
+        ${LOCAL_PATH}/cjsonutils/
         )
 
 #导入动态库
-add_library(cjson SHARED IMPORTED)
-set_target_properties(cjson    PROPERTIES IMPORTED_LOCATION    ${LOCAL_PATH}/libs/${ANDROID_ABI}/libcjson.so )
+add_library(cjsoninterface SHARED IMPORTED)
+set_target_properties(cjsoninterface    PROPERTIES IMPORTED_LOCATION    ${LOCAL_PATH}/libs/${ANDROID_ABI}/libcjsoninterface.so )
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -37,7 +38,9 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/native-lib.cpp )
+             src/main/cpp/native-lib.cpp
+             ${LOCAL_PATH}/cjsonutils/CCjsonUtils.cpp
+             )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -58,7 +61,7 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
                        native-lib
-                       cjson  #链接引入的动态库
+                       cjsoninterface  #链接引入的动态库
 
                        # Links the target library to the log library
                        # included in the NDK.

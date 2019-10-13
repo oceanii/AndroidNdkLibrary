@@ -17,6 +17,6 @@ extern "C" {
 };
 #endif
 
-const char* getCjsonVersion() {
+const char* API_getCjsonVersion() {
     return cJSON_Version();
 }

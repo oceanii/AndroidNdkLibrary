@@ -9,9 +9,6 @@ cmake_minimum_required(VERSION 3.4.1)
 set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-# 宏定义
-# ADD_DEFINITIONS(-D_HIDDEN_API_SYMBOL)
-
 #打印LOG
 message(STATUS "Cmake build type is: "${CMAKE_BUILD_TYPE})
 message(STATUS "Cmake build android abi is: "${ANDROID_ABI})
@@ -26,12 +23,13 @@ set(LOCAL_PATH ${CMAKE_SOURCE_DIR}/src/main/cpp)
 #引入头文件
 include_directories(
         ${LOCAL_PATH}/libs/source/cjson/
-        ${LOCAL_PATH}/libs/source/
+        ${LOCAL_PATH}/cppfile/
+        ${LOCAL_PATH}/cfile/
         )
 
 #增加动态库
 add_library( # Sets the name of the library.
-             cjson
+             cjsoninterface
 
              # Sets the library as a shared library.
              SHARED
@@ -39,7 +37,8 @@ add_library( # Sets the name of the library.
              # Provides a relative path to your source file(s).
              ${LOCAL_PATH}/libs/source/cjson/cJSON.c
              ${LOCAL_PATH}/libs/source/cjson/cJSON_Utils.c
-             ${LOCAL_PATH}/libs/source/CCjsonInterface.cpp
+             ${LOCAL_PATH}/cppfile/CCjsonInterface.cpp
+
              )
 
 
@@ -76,7 +75,7 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
                        native-lib
-                       cjson  #链接该动态库进行测试, 如果不测试, 则不需要链接
+                       cjsoninterface  #链接该动态库进行测试, 如果不测试, 则不需要链接
 
                        # Links the target library to the log library
                        # included in the NDK.

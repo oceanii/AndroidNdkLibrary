@@ -8,17 +8,7 @@
 //此处导入C++的头文件
 //#include "CObjectUtils.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-//此处导入C的头文件
-#include "cJSON.h"
-#include "cJSON_Utils.h"
-
-#ifdef __cplusplus
-};
-#endif
+#include "CCjsonInterface.h"
 
 class CCjsonUtils{
 public:

@@ -13,5 +13,5 @@ CCjsonUtils::~CCjsonUtils() {
 }
 
 const char* CCjsonUtils::getCjsonVersion() {
-    return cJSON_Version();
+    return API_getCjsonVersion();
 }

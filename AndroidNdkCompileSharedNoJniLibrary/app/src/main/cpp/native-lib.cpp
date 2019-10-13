@@ -6,7 +6,6 @@
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
-//#include "cJSON.h"
 #include "CCjsonInterface.h"
 
 extern "C"
@@ -16,8 +15,7 @@ JNIEXPORT jstring JNICALL Java_com_example_xzy_androidndkcompilesharednojnilibra
         jobject /* this */) {
     std::string hello = "Hello from C++";
 
-    //const char *pCjsonVersionStr = cJSON_Version();
-    const char *pCjsonVersionStr = getCjsonVersion();
+    const char *pCjsonVersionStr = API_getCjsonVersion();
     LOGD("AndroidNdkCompileSharedNoJniLibrary/stringFromJNI: pCjsonVersionStr=%s", pCjsonVersionStr);
 
     return env->NewStringUTF(hello.c_str());
